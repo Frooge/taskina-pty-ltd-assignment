@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
-import './App.css'
 import PageItem from './components/page-item'
+
+import './App.css'
 
 function App() {
   const [allPages, setAllPages] = useState(true);
@@ -21,6 +22,11 @@ function App() {
     setPages(newPages);
   }
 
+  const handleSubmit = () => {
+    const checkedPages = pages.filter(page => page.checked);
+    console.log(checkedPages);
+  }
+
   useEffect(() => {
     if (pages.every(page => page.checked)) {
         setAllPages(true);
@@ -28,7 +34,6 @@ function App() {
         setAllPages(false);
       }
   }, [pages])
-  
 
   return (
     <main className='main'>
@@ -50,12 +55,10 @@ function App() {
               onClick={() => handlePageSelect(page.checked, index)}
             />
           ))}
-          
-
         </div>
         <hr/>
         <div className='button-container'>
-          <button className='button-primary'>Done</button>
+          <button className='button-primary' onClick={handleSubmit}>Done</button>
         </div>
       </div>
     </main>

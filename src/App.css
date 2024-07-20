@@ -6,8 +6,8 @@
 .container {
   display: flex;
   flex-direction: column;
-  width: 370px;
   background-color: var(--bg-color);
+  width: 370px;
   margin-top: 85px;
   padding: 10px 0;
   border: 1px solid #EEEEEE;
@@ -37,7 +37,7 @@
 
 .checkbox-container input[type="checkbox"] {
   position: absolute;
-  opacity: 0; /* Hide the default checkbox */
+  opacity: 0;
 }
 
 .checkbox-container input[type="checkbox"] + .custom-checkbox {
@@ -64,15 +64,15 @@
   border-radius: 1px;
   border-left: none;
   border-bottom: none;
-  transform: rotate(135deg); /* Correct rotation */
+  transform: rotate(135deg);
   position: absolute;
-  top: 6px; /* Adjust positioning as needed */
-  left: 4px; /* Adjust positioning as needed */
+  top: 6px;
+  left: 4px;
   opacity: 0;
 }
 
 .checkbox-container input[type="checkbox"]:checked + .custom-checkbox:before {
-  opacity: 1; /* Show the checkmark when checked */
+  opacity: 1;
 }
 
 .item-container:hover .checkbox-container input[type="checkbox"] + .custom-checkbox:before {
