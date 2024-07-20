@@ -4,11 +4,12 @@
 }
 
 .container {
+  position: absolute;
   display: flex;
   flex-direction: column;
   background-color: var(--bg-color);
+  top: 85px;
   width: 370px;
-  margin-top: 85px;
   padding: 10px 0;
   border: 1px solid #EEEEEE;
   border-radius: 6px;
@@ -25,6 +26,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  height: 42px;
   padding: 8px 15px 8px 22px;
   cursor: pointer;
 }
@@ -49,18 +51,21 @@
   position: relative;
   vertical-align: middle;
   cursor: pointer;
+  transform-style: preserve-3d; /* enable z-index for pseudo-elements */
+  z-index: 10;
+
 }
 
 .checkbox-container input[type="checkbox"]:checked + .custom-checkbox {
   background-color: #2469F6;
 }
 
-.checkbox-container .custom-checkbox:before {
+.checkbox-container .custom-checkbox:before { /* checkmark icon */
   content: '';
   display: block;
   width: 15px;
   height: 6px;
-  border: 1px solid white;
+  border: 1px solid #FFFFFF;
   border-radius: 1px;
   border-left: none;
   border-bottom: none;
@@ -69,6 +74,20 @@
   top: 6px;
   left: 4px;
   opacity: 0;
+}
+
+.checkbox-container .custom-checkbox:after { /* highlight border */
+  content: '';
+  width: 23px;
+  height: 23px;
+  border-radius: 6px;
+  border: 3px solid transparent;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  top: -3px;
+  left: -3px;
+  transform: translateZ(-1px);
 }
 
 .checkbox-container input[type="checkbox"]:checked + .custom-checkbox:before {
@@ -80,12 +99,28 @@
   border-color: #E3E3E3;
 }
 
+.item-container:active .checkbox-container input[type="checkbox"] + .custom-checkbox:before {
+  border-color: #878787;
+}
+
+.item-container:active .checkbox-container input[type="checkbox"] + .custom-checkbox:after {
+  border-color: #EAF0FE;
+}
+
 .item-container:hover .checkbox-container input[type="checkbox"] + .custom-checkbox {
   border: 1px solid #BDBDBD;
 }
 
+.item-container:active .checkbox-container input[type="checkbox"]:checked + .custom-checkbox:before {
+  border-color: #FFFFFF;
+}
+
 .item-container:hover .checkbox-container input[type="checkbox"]:checked +  .custom-checkbox {
   background-color: #5087F8;
+}
+
+.item-container:active .checkbox-container input[type="checkbox"]:checked +  .custom-checkbox {
+  background-color: #2469F6;
 }
 
 .button-container {
@@ -97,10 +132,17 @@
   width: 100%;
   border: none;
   cursor: pointer;
+  height: 40px;
   padding: 10px 20px;
+  gap: 10px;
+  border-radius: 4px;
   background-color: var(--primary-color);
 }
 
 .button-primary:hover {
   background-color: var(--primary-color-accent);
+}
+
+.button-primary:active {
+  background-color: var(--primary-color);
 }
